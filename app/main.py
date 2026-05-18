@@ -1,6 +1,5 @@
 """
 API de clasificación de currículos — FastAPI
-Basada exactamente en el código de modelos_nlp.ipynb
 """
 
 import os, json, pickle, re
@@ -30,7 +29,7 @@ EXTRA_SW = set(bundle['preprocessing']['extra_stopwords'])
 STOP_EN  = set(stopwords.words('english')) | EXTRA_SW
 
 
-# ─── Funciones de preprocesamiento (idénticas al notebook) ───────────────────
+# ─── Funciones de preprocesamiento───────────────────
 
 def clean_text(text: str) -> str:
     """Limpia texto crudo de PDF: quita HTML, números, puntuación y stopwords."""
@@ -70,7 +69,7 @@ def prepare_ft_seqs(texts, vocab, min_n, max_n, max_len):
     return np.array(result)
 
 
-# ─── Función de predicción (igual que predict_resume del notebook) ────────────
+# ─── Función de predicción ────────────
 
 def predict_resume(raw_text: str) -> dict:
     model_name = bundle['best_model_name']
@@ -113,7 +112,7 @@ def predict_resume(raw_text: str) -> dict:
         proba = model.predict(seq, verbose=0)[0]
         pred  = int(np.argmax(proba))
 
-    elif model_name == 'RoBERTa':                                        # ← NUEVO
+    elif model_name == 'RoBERTa':                                       
         from transformers import RobertaTokenizer, TFRobertaForSequenceClassification
         import tensorflow as tf
 
@@ -129,7 +128,7 @@ def predict_resume(raw_text: str) -> dict:
         model.load_weights(os.path.join(MODELS_DIR, 'roberta_best.weights.h5'))
 
         enc    = tokenizer(
-            [raw_text],                      # texto original sin limpiar
+            [raw_text],                      
             max_length=max_len,
             padding='max_length',
             truncation=True,
