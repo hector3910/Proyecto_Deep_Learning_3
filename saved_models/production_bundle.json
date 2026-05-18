@@ -1,0 +1,82 @@
+{
+  "best_model_name": "RoBERTa",
+  "best_f1_test": 0.7801170031340156,
+  "classes": [
+    "ACCOUNTANT",
+    "ADVOCATE",
+    "AGRICULTURE",
+    "APPAREL",
+    "ARTS",
+    "AUTOMOBILE",
+    "AVIATION",
+    "BANKING",
+    "BPO",
+    "BUSINESS-DEVELOPMENT",
+    "CHEF",
+    "CONSTRUCTION",
+    "CONSULTANT",
+    "DESIGNER",
+    "DIGITAL-MEDIA",
+    "ENGINEERING",
+    "FINANCE",
+    "FITNESS",
+    "HEALTHCARE",
+    "HR",
+    "INFORMATION-TECHNOLOGY",
+    "PUBLIC-RELATIONS",
+    "SALES",
+    "TEACHER"
+  ],
+  "metrics_all": {
+    "RoBERTa": {
+      "accuracy": 0.7908847184986595,
+      "precision": 0.8039703115265536,
+      "recall": 0.7908847184986595,
+      "f1": 0.7801170031340156,
+      "roc_auc": 0.9665048471150556
+    },
+    "Word2Vec+BiLSTM": {
+      "accuracy": 0.7560321715817694,
+      "precision": 0.745113161059901,
+      "recall": 0.7560321715817694,
+      "f1": 0.7412179130961747,
+      "roc_auc": 0.9543233804526573
+    },
+    "CNN-1D": {
+      "accuracy": 0.7453083109919572,
+      "precision": 0.7247171589559827,
+      "recall": 0.7453083109919572,
+      "f1": 0.7259152082666986,
+      "roc_auc": 0.963954400095047
+    },
+    "TF-IDF+XGBoost": {
+      "accuracy": 0.5281501340482574,
+      "precision": 0.46262679833544484,
+      "recall": 0.5281501340482574,
+      "f1": 0.4778490873233912,
+      "roc_auc": 0.8134905641276559
+    },
+    "FastText": {
+      "accuracy": 0.6487935656836461,
+      "precision": 0.6390223892568203,
+      "recall": 0.6487935656836461,
+      "f1": 0.6325705981963027,
+      "roc_auc": 0.9220866598960091
+    }
+  },
+  "preprocessing": {
+    "extra_stopwords": [
+      "name",
+      "company",
+      "city",
+      "skills",
+      "state",
+      "experience"
+    ],
+    "note": "Aplicar clean_text() antes de inferencia"
+  },
+  "model_path": "saved_models/roberta_best.weights.h5",
+  "base_model": "roberta-base",
+  "max_len": 256,
+  "framework": "transformers+tensorflow"
+}

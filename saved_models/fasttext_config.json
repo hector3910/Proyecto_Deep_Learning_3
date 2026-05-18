@@ -1,0 +1,10 @@
+{
+  "ngram_min": 3,
+  "ngram_max": 4,
+  "max_len": 100,
+  "max_feat": 200000,
+  "lr": 0.0005,
+  "epochs": 30,
+  "emb_dim": 100,
+  "batch_size": 32
+}

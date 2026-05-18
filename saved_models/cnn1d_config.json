@@ -1,0 +1,15 @@
+{
+  "n_filters": 128,
+  "max_len": 150,
+  "lr": 0.0005,
+  "kernel_sizes": [
+    2,
+    3,
+    4,
+    5
+  ],
+  "epochs": 30,
+  "emb_dim": 150,
+  "dropout": 0.4,
+  "batch_size": 32
+}
