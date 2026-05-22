@@ -1,6 +1,50 @@
-# Proyecto Integrador — Clasificación de Currículos con Deep Learning (NLP)
+# Proyecto Integrador de Aprendizaje Automático: Segmentación de imágenes biomédicas y Clasificación de texto (NLP) mediante modelos de deep learning: evaluación, comparación y despliegue básico
 
-## Descripción
+Este proyecto se divide en **2 bloques**: 
+
+## 1. Segmentación de células
+
+En este bloque se implementaron y compararon múltiples arquitecturas modernas de Deep Learning para segmentación celular utilizando el dataset Sartorius Cell Instance Segmentation (Kaggle, 2021), compuesto por 606 imágenes de microscopía de campo brillante correspondientes a tres líneas celulares: shsy5y, astro y cort. El objetivo principal fue evaluar el desempeño de diferentes enfoques de segmentación biomédica mediante métricas especializadas, identificando fortalezas, limitaciones y capacidad de generalización de cada arquitectura.
+
+Para ello, se desarrolló un pipeline completo que incluyó análisis exploratorio de datos (EDA), reconstrucción de máscaras mediante Run Length Encoding (RLE), preprocesamiento de imágenes, técnicas de data augmentation, entrenamiento de modelos y evaluación cuantitativa. Entre las arquitecturas implementadas se encuentran U-Net++, HoverNet, Cellpose 2.0, Segment Anything Model (SAM) y Mask R-CNN con Swin Transformer.
+
+Los modelos fueron evaluados utilizando métricas especializadas de segmentación, tales como Dice Score, Intersection over Union (IoU), Precision, Recall, AUC, Hausdorff Distance y Balanced Accuracy, permitiendo realizar una comparación integral del desempeño de cada arquitectura en escenarios de microscopía celular.
+
+### Descripción
+
+Sistema de segmentación celular basado en múltiples arquitecturas modernas de Deep Learning, aplicado a imágenes de microscopía de campo brillante para evaluar desempeño, generalización y capacidad de detección de instancias celulares.
+
+**Dataset:** [Sartorius Cell Instance Segmentation — Kaggle (2021)] (https://www.kaggle.com/competitions/sartorius-cell-instance-segmentation/overview)
+**Imágenes:** 606 imágenes de microscopía
+**Clases:** 3 líneas celulares (shsy5y, astro, cort)
+
+--- 
+
+### Modelos implementados
+
+| # | Modelo | Técnica |
+|---|--------|---------|
+| 1 | U-Net++ | Segmentación semántica multiescala | 
+| 2 | HoverNet | Segmentación + separación de núcleos |
+| 3 | Cellpose 2.0 | Segmentación basada en gradientes de flujo | 
+| 4 | SAM (Segment Anything Model) | Modelo fundacional de segmentación | 
+| 5 | Mask R-CNN + Swin Transformer | Detección de instancias + backbone Transformer | 
+
+---
+
+### Métricas de evaluación
+
+- Dice Score  
+- Intersection over Union (IoU)  
+- Precision  
+- Recall  
+- AUC  
+- Hausdorff Distance  
+- Balanced Accuracy
+
+
+## 2. Clasificación de Currículos con Deep Learning (NLP)
+### Descripción
 
 Sistema de clasificación automática de currículos en categorías laborales
 usando modelos de Deep Learning y Procesamiento de Lenguaje Natural (NLP).
@@ -11,7 +55,7 @@ usando modelos de Deep Learning y Procesamiento de Lenguaje Natural (NLP).
 
 ---
 
-## Modelos implementados
+### Modelos implementados
 
 | # | Modelo | Técnica | Búsqueda HP |
 |---|--------|---------|-------------|
@@ -23,7 +67,7 @@ usando modelos de Deep Learning y Procesamiento de Lenguaje Natural (NLP).
 
 ---
 
-## Métricas de evaluación
+### Métricas de evaluación
 
 - Accuracy
 - Precision (weighted)
@@ -35,7 +79,7 @@ usando modelos de Deep Learning y Procesamiento de Lenguaje Natural (NLP).
 
 ---
 
-## Estructura del proyecto
+### Estructura del proyecto
 
 ```
 project/
@@ -43,8 +87,12 @@ project/
 │   └── Resume.csv                  # Dataset original de Kaggle
 │
 ├── notebooks/
-│   ├── eda.ipynb                   # Análisis Exploratorio de Datos
-│   └── modelos_nlp.ipynb           # Entrenamiento y evaluación de modelos
+    ├── Bloque_1/ 
+|     ├── 01_EDA_Preprocesamiento.ipynb                  # Análisis Exploratorio de Datos (imágenes)
+|     └── 02_Modelos_Entrenamiento.ipynb                 # Entrenamiento y evaluación de modelos (imágenes)
+|   ├── Bloque_2/
+│     ├── eda.ipynb                                      # Análisis Exploratorio de Datos (NLP)
+│     └── modelos_nlp.ipynb                              # Entrenamiento y evaluación de modelos (NLP)
 │
 ├── saved_models/                   # Generado al correr modelos_nlp.ipynb
 │   ├── label_encoder.joblib        # Codificador de etiquetas
@@ -71,15 +119,15 @@ project/
 
 ---
 
-## Cómo ejecutar
+### Cómo ejecutar
 
-### 1. Clonar e instalar dependencias
+#### 1. Clonar e instalar dependencias
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### 2. Colocar el dataset
+#### 2. Colocar el dataset
 
 Descargar `Resume.csv` de Kaggle y colocarlo en `data/Resume.csv`.
 Luego ajustar la ruta en `notebooks/modelos_nlp.ipynb` sección 2:
@@ -88,16 +136,16 @@ Luego ajustar la ruta en `notebooks/modelos_nlp.ipynb` sección 2:
 DATA_PATH = r'C:/tu/ruta/data/Resume.csv'
 ```
 
-### 3. Correr el EDA
+#### 3. Correr el EDA
 
 Abrir y ejecutar `notebooks/eda.ipynb`
 
-### 4. Entrenar los modelos
+#### 4. Entrenar los modelos
 
 Abrir y ejecutar `notebooks/modelos_nlp.ipynb`
 Esto genera automáticamente la carpeta `saved_models/` con todos los artefactos.
 
-### 5. Levantar la API localmente
+#### 5. Levantar la API localmente
 
 ```bash
 uvicorn app.main:app --reload
@@ -105,7 +153,7 @@ uvicorn app.main:app --reload
 
 Abrir en el navegador: [http://localhost:8000/docs](http://localhost:8000/docs)
 
-### 6. Ejecutar con Docker
+#### 6. Ejecutar con Docker
 
 ```bash
 # Construir la imagen
@@ -117,7 +165,7 @@ docker run -p 8000:8000 resume-classifier
 
 ---
 
-## Endpoints de la API
+### Endpoints de la API
 
 | Método | Ruta | Descripción |
 |--------|------|-------------|
@@ -125,7 +173,7 @@ docker run -p 8000:8000 resume-classifier
 | POST | `/predict_text` | Clasifica un CV en texto plano |
 | GET | `/models/info` | Métricas de todos los modelos entrenados |
 
-### Ejemplo de uso — `/predict_text`
+#### Ejemplo de uso — `/predict_text`
 
 **Request:**
 ```json
@@ -145,7 +193,7 @@ docker run -p 8000:8000 resume-classifier
 
 ---
 
-## Preprocesamiento aplicado
+### Preprocesamiento aplicado
 
 Igual en notebook y API para garantizar consistencia:
 
@@ -157,7 +205,7 @@ Igual en notebook y API para garantizar consistencia:
 
 ---
 
-## Herramientas utilizadas
+### Herramientas utilizadas
 
 | Categoría | Herramientas |
 |-----------|-------------|
