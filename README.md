@@ -4,12 +4,6 @@ Este proyecto se divide en **2 bloques**:
 
 ## 1. Segmentación de células
 
-En este bloque se implementaron y compararon múltiples arquitecturas modernas de Deep Learning para segmentación celular utilizando el dataset Sartorius Cell Instance Segmentation (Kaggle, 2021), compuesto por 606 imágenes de microscopía de campo brillante correspondientes a tres líneas celulares: shsy5y, astro y cort. El objetivo principal fue evaluar el desempeño de diferentes enfoques de segmentación biomédica mediante métricas especializadas, identificando fortalezas, limitaciones y capacidad de generalización de cada arquitectura.
-
-Para ello, se desarrolló un pipeline completo que incluyó análisis exploratorio de datos (EDA), reconstrucción de máscaras mediante Run Length Encoding (RLE), preprocesamiento de imágenes, técnicas de data augmentation, entrenamiento de modelos y evaluación cuantitativa. Entre las arquitecturas implementadas se encuentran U-Net++, HoverNet, Cellpose 2.0, Segment Anything Model (SAM) y Mask R-CNN con Swin Transformer.
-
-Los modelos fueron evaluados utilizando métricas especializadas de segmentación, tales como Dice Score, Intersection over Union (IoU), Precision, Recall, AUC, Hausdorff Distance y Balanced Accuracy, permitiendo realizar una comparación integral del desempeño de cada arquitectura en escenarios de microscopía celular.
-
 ### Descripción
 
 Sistema de segmentación celular basado en múltiples arquitecturas modernas de Deep Learning, aplicado a imágenes de microscopía de campo brillante para evaluar desempeño, generalización y capacidad de detección de instancias celulares.
