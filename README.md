@@ -192,3 +192,11 @@ curl -X POST http://localhost:8000/predict_text -H "Content-Type: application/js
 ```
 
 ---
+
+## Ejemplo de ejecución de la **API**:
+
+
+<p align="center">
+  <img src="assets/nlp_api.gif" width="600" alt="Vista previa de la API">
+</p>
+
