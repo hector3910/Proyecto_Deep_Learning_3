@@ -192,29 +192,3 @@ curl -X POST http://localhost:8000/predict_text -H "Content-Type: application/js
 ```
 
 ---
-
-### Preprocesamiento aplicado
-
-Igual en notebook y API para garantizar consistencia:
-
-1. Eliminación de saltos de línea y espacios extra
-2. Conversión a minúsculas
-3. Eliminación de caracteres no alfabéticos
-4. Tokenización con NLTK
-5. Eliminación de stopwords (inglés + stopwords del dominio)
-
----
-
-### Herramientas utilizadas
-
-| Categoría | Herramientas |
-|-----------|-------------|
-| Deep Learning | TensorFlow / Keras |
-| Transformers | HuggingFace Transformers (RoBERTa) |
-| Embeddings | Gensim (Word2Vec) |
-| ML Clásico | XGBoost, Scikit-learn |
-| NLP | NLTK, WordCloud |
-| Visualización | Plotly, Seaborn, Matplotlib |
-| API | FastAPI, Uvicorn |
-| Contenedor | Docker |
-| Lenguaje | Python 3.10 |
