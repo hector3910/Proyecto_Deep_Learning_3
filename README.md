@@ -172,22 +172,22 @@ docker run -p 8000:8000 resume-classifier
 **Request:**
 ```json
 {
-  "text": "Experienced Data Scientist with 5 years in Python, TensorFlow and NLP. MSc Computer Science."
+  "text": "Registered Client Service Associate with experience in investment client support, financial advisory assistance, and banking relationship management. Strong background in client account operations, marketing presentations, and book of business management worth $40 million. Previously worked as Relationship Banker II for 8 years, ranked top 10 among 82 reps for 7 consecutive years, exceeding sales quotas and winning Best Sales Representative 3 straight years. Increased branch loan portfolio by $800,000 in 7 months and net deposits by $1.7 million in one quarter. Also has experience as Private Banker and Technical Writer/Web Developer. Holds Series 7 General Securities license. B.S. in Computer Information Systems from Strayer University. Skilled in Microsoft Office, Adobe tools, Oracle 9i, Unix, Visio, and Dreamweaver."
 }
 ```
 
 ### Ejemplo curl
 
 ```bash
-curl -X POST http://localhost:8000/predict_text -H "Content-Type: application/json" -d "{\"text\": \"Experienced Data Scientist with 5 years in Python, TensorFlow and NLP. MSc Computer Science.\"}"
+curl -X POST http://localhost:8000/predict_text -H "Content-Type: application/json" -d "{\"text\": \"Registered Client Service Associate with experience in investment client support, financial advisory assistance, and banking relationship management. Strong background in client account operations, marketing presentations, and book of business management worth $40 million. Previously worked as Relationship Banker II for 8 years, ranked top 10 among 82 reps for 7 consecutive years, exceeding sales quotas and winning Best Sales Representative 3 straight years. Increased branch loan portfolio by $800,000 in 7 months and net deposits by $1.7 million in one quarter. Also has experience as Private Banker and Technical Writer/Web Developer. Holds Series 7 General Securities license. B.S. in Computer Information Systems from Strayer University. Skilled in Microsoft Office, Adobe tools, Oracle 9i, Unix, Visio, and Dreamweaver.\"}"
 ```
 
 **Response:**
 ```json
 {
-  "categoria_predicha": "Data Science",
-  "confianza": 0.9231,
-  "modelo_usado": "TF-IDF+XGBoost"
+  "categoria_predicha": "BANKING",
+  "confianza": 0.8205,
+  "modelo_usado": "RoBERTa"
 }
 ```
 
