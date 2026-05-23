@@ -176,6 +176,12 @@ docker run -p 8000:8000 resume-classifier
 }
 ```
 
+### Ejemplo curl
+
+```bash
+curl -X POST http://localhost:8000/predict_text -H "Content-Type: application/json" -d "{\"text\": \"Experienced Data Scientist with 5 years in Python, TensorFlow and NLP. MSc Computer Science.\"}"
+```
+
 **Response:**
 ```json
 {
